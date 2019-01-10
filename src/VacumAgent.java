@@ -96,6 +96,12 @@ class Map {
         return this.y == 50;
     }
 
+    public void cleanMap() {
+        this.x = 50;
+        this.y = 50;
+        this._map = new boolean[100][100];
+    }
+
 }
 
 
@@ -168,6 +174,9 @@ public class VacumAgent implements Agent{
                 if (map.isAtStart()) {
                     // Turn off
                     action = actions[1];
+                    // clean map
+                    this.map.cleanMap();
+
                 } else if (!map.correctXstart()) {
                     action = regulateXstart();
                 } else if (!map.correctYstart()) {
